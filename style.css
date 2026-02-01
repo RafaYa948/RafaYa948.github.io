@@ -191,3 +191,90 @@ body {
   color: var(--gray);
 }
 
+/* MOBILE OPTIMIZATION */
+
+@media (max-width: 768px) {
+
+  /* NAV */
+
+  .nav-inner {
+    flex-direction: column;
+    height: auto;
+    padding: 12px 0;
+  }
+
+  .nav-links {
+    margin-top: 8px;
+  }
+
+  .nav-links a {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+
+  /* HERO */
+
+  .hero {
+    padding: 100px 0 60px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* STATS */
+
+  .hero-stats {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* GRID */
+
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  /* SECTIONS */
+
+  .section {
+    padding: 60px 0;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  /* ABOUT */
+
+  .about-container {
+    padding: 0 10px;
+  }
+
+  /* CONTACT */
+
+  .contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+}
