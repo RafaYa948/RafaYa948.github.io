@@ -1,3 +1,7 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 :root {
   --bg-dark: #0f172a;
   --bg-light: #ffffff;
@@ -366,5 +370,34 @@ body {
     gap: 12px;
   }
 
+}
+
+@media (max-width: 768px) {
+
+  .nav-menu {
+    gap: 12px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 14px 20px !important;
+    font-size: 16px !important;
+    border-radius: 10px;
+    min-height: 44px;
+    line-height: 1.2;
+  }
+
+  .nav a {
+    font-size: 16px;
+  }
+
+}
+
+.nav {
+  flex-wrap: nowrap;
+}
+
+.nav-menu {
+  flex-wrap: nowrap;
 }
 
