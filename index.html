@@ -3,138 +3,715 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rafaya Islam Diba — Strategy, Brand & Leadership</title>
-  <meta name="description" content="Rafaya Islam Diba — Strategy, Brand & Leadership. Co-Founder of TAEI Academy, TEDx Organiser, Head of Strategy at Centered Edge. Based in Kuala Lumpur, operating across ASEAN." />
-  <link rel="stylesheet" href="css/style.css" />
+  <title>Rafaya Islam Diba</title>
+  <meta name="description" content="Rafaya Islam Diba — strategist, builder, and TEDx organiser based in Kuala Lumpur." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --off-white: #fafaf8;
+      --black: #0d0d0d;
+      --black-2: #1a1a1a;
+      --purple: #7c3aed;
+      --purple-light: #a78bfa;
+      --purple-muted: #ede9fe;
+      --gray: #6b7280;
+      --gray-light: #f3f4f6;
+      --border: #e5e7eb;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+
+    nav.scrolled { border-bottom-color: var(--border); }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--black);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--gray);
+      font-weight: 300;
+    }
+
+    .nav-dot { color: var(--purple); font-size: 1rem; }
+
+    #kl-time {
+      font-variant-numeric: tabular-nums;
+      min-width: 80px;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 7rem 3rem 4rem;
+      gap: 4rem;
+      position: relative;
+    }
+
+    .hero-left { max-width: 560px; }
+
+    .hero-greeting {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-greeting::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--purple);
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--black);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--purple);
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-top: 1.75rem;
+      max-width: 420px;
+      border-left: 2px solid var(--purple-muted);
+      padding-left: 1.25rem;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .hero-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--black);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .hero-link:hover { color: var(--purple); border-bottom-color: var(--purple); }
+
+    .hero-right {
+      position: relative;
+      height: 620px;
+    }
+
+    .hero-img-main {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 2px;
+      filter: grayscale(8%);
+    }
+
+    .hero-img-badge {
+      position: absolute;
+      bottom: 2rem;
+      left: -2rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 1rem 1.25rem;
+      border-radius: 2px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    .hero-img-badge p {
+      font-size: 0.7rem;
+      color: var(--gray);
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-img-badge strong {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    /* DIVIDER */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 0 3rem;
+      width: calc(100% - 6rem);
+    }
+
+    /* STORY SECTIONS — Daniel Autry style */
+    .story-section {
+      padding: 5rem 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .story-grid.reverse { direction: rtl; }
+    .story-grid.reverse > * { direction: ltr; }
+
+    .story-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 1.25rem;
+    }
+
+    .story-text h2 em {
+      font-style: italic;
+      color: var(--purple);
+    }
+
+    .story-text p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.85;
+    }
+
+    .story-text p + p { margin-top: 1rem; }
+
+    .story-img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 2px;
+      filter: grayscale(5%);
+    }
+
+    .story-img.portrait {
+      height: 520px;
+      object-position: top center;
+    }
+
+    /* WHAT I DO — text only sections like Daniel */
+    .what-section {
+      padding: 5rem 3rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .what-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .what-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .what-header span {
+      font-size: 0.75rem;
+      color: var(--purple);
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .what-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .what-item {
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .what-item:nth-child(odd) { padding-right: 3rem; border-right: 1px solid var(--border); }
+    .what-item:nth-child(even) { padding-left: 3rem; }
+    .what-item:last-child, .what-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+
+    .what-item-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--purple);
+      padding-top: 0.2rem;
+    }
+
+    .what-item h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .what-item p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    /* PERSONAL SECTION */
+    .personal-section {
+      padding: 5rem 3rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--off-white);
+    }
+
+    .personal-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .personal-header {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 3rem;
+    }
+
+    .personal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .personal-item {
+      padding: 2rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .personal-item:last-child { border-right: none; }
+
+    .personal-item-icon {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      color: var(--purple-light);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .personal-item h4 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 0.6rem;
+    }
+
+    .personal-item p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      padding: 6rem 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-left h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 1.25rem;
+      line-height: 1.1;
+    }
+
+    .contact-left h2 em { font-style: italic; color: var(--purple); }
+
+    .contact-left p {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 0; }
+
+    .contact-link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding-left 0.25s;
+    }
+
+    .contact-link-item:hover { padding-left: 0.5rem; }
+
+    .contact-link-item:first-child { border-top: 1px solid var(--border); }
+
+    .contact-link-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--purple);
+      min-width: 80px;
+    }
+
+    .contact-link-value {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--black);
+      font-weight: 400;
+    }
+
+    .contact-arrow { color: var(--gray); font-size: 0.85rem; }
+
+    .contact-right {
+      padding-top: 0.5rem;
+    }
+
+    .contact-right blockquote {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--black);
+      line-height: 1.5;
+      border-left: 2px solid var(--purple);
+      padding-left: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-right cite {
+      font-size: 0.75rem;
+      color: var(--gray);
+      font-style: normal;
+      letter-spacing: 0.05em;
+      padding-left: 1.75rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 3rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--white);
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      color: var(--gray);
+      font-weight: 400;
+    }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: var(--gray);
+      letter-spacing: 0.05em;
+    }
+
+    /* REVEAL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.25rem 3rem; gap: 2.5rem; min-height: auto; }
+      .hero-right { height: 360px; }
+      .hero-img-badge { left: 0.5rem; bottom: 0.5rem; }
+      .story-section { padding: 3.5rem 1.25rem; }
+      .story-grid, .story-grid.reverse { grid-template-columns: 1fr; direction: ltr; gap: 2rem; }
+      .story-img { height: 280px; }
+      .what-section { padding: 3.5rem 1.25rem; }
+      .what-items { grid-template-columns: 1fr; }
+      .what-item, .what-item:nth-child(odd), .what-item:nth-child(even) { padding: 1.75rem 0; border-right: none; border-bottom: 1px solid var(--border); }
+      .personal-section { padding: 3.5rem 1.25rem; }
+      .personal-grid { grid-template-columns: 1fr; }
+      .personal-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .contact-section { grid-template-columns: 1fr; padding: 3.5rem 1.25rem; gap: 3rem; }
+      footer { flex-direction: column; gap: 0.75rem; padding: 1.5rem 1.25rem; text-align: center; }
+    }
+  </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-logo">Rafaya Islam Diba</a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="pages/about.html">About</a></li>
-      <li><a href="pages/work.html">Work</a></li>
-      <li><a href="pages/contact.html">Contact</a></li>
-    </ul>
+  <nav id="nav">
+    <span class="nav-logo">Rafaya Islam Diba</span>
+    <div class="nav-right">
+      <span>Kuala Lumpur</span>
+      <span class="nav-dot">·</span>
+      <span id="kl-time">--:--:-- --</span>
+    </div>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg-text">Strategy</div>
-    <div class="hero-eyebrow">
-      <span></span>
-      <p>Kuala Lumpur &nbsp;·&nbsp; ASEAN</p>
-    </div>
-    <h1 class="hero-name">Rafaya<br><em>Islam Diba</em></h1>
-    <div class="hero-descriptor">
-      <p>Strategy, Brand & Leadership — building institutions, ideas, and experiences that matter across Southeast Asia.</p>
-      <div class="hero-descriptor-divider"></div>
-      <span class="hero-location">Co-Founder, TAEI Academy<br>TEDx Organiser</span>
-    </div>
-    <div class="hero-scroll">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <div class="intro-strip">
-    <div class="intro-grid">
-      <div class="intro-left reveal">
-        <div class="section-eyebrow">
-          <span></span>
-          <p>About the work</p>
-        </div>
-        <h2 class="section-title" style="color: var(--cream);">Building things<br><em style="font-style:italic; color: var(--gold-light);">that last.</em></h2>
-      </div>
-      <div class="intro-right reveal">
-        <p>I operate at the intersection of strategy, communication, and purpose — building brands, systems, and experiences for people and organisations who are serious about what they're doing.</p>
-        <p>Six years across digital marketing, brand strategy, and event leadership. A foundation in Computer Science and Cybersecurity. Currently running two co-founded institutions and an international TEDx event out of Kuala Lumpur.</p>
+    <div class="hero-left">
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">Rafaya<br><em>Islam Diba</em></h1>
+      <p class="hero-tagline">Strategist, builder, and TEDx organiser. I started freelancing during a pandemic, chose a degree because it sounded impressive, and somehow ended up building institutions I actually care about.</p>
+      <div class="hero-links">
+        <a href="https://linkedin.com/in/rafayaislamdiba" target="_blank" class="hero-link">LinkedIn ↗</a>
+        <a href="mailto:hello@rafaislamdiba.com" class="hero-link">Say hello ↗</a>
       </div>
     </div>
-  </div>
-
-  <section class="what-section">
-    <div style="max-width:1200px; margin: 0 auto;">
-      <div class="section-eyebrow reveal">
-        <span></span>
-        <p>What I do</p>
-      </div>
-      <div class="pillars reveal">
-        <div class="pillar">
-          <div class="pillar-number">01</div>
-          <div class="pillar-title">Strategy & Brand</div>
-          <div class="pillar-line"></div>
-          <p class="pillar-text">Building brand foundations from the ground up — positioning, content architecture, client journey, and the strategic infrastructure that makes it all move. Currently leading brand strategy for Centered Edge, the executive leadership content platform for ASEAN's C-suite.</p>
-        </div>
-        <div class="pillar">
-          <div class="pillar-number">02</div>
-          <div class="pillar-title">Values-Driven Education</div>
-          <div class="pillar-line"></div>
-          <p class="pillar-text">Co-founding and directing TAEI Academy — an institution advancing empathy and integrity as lived practice. Rebuilding the organisation from the ground up for adult professionals in Malaysia, bridging a decade of institutional history with an entirely new strategic direction.</p>
-        </div>
-        <div class="pillar">
-          <div class="pillar-number">03</div>
-          <div class="pillar-title">Ideas & Experience Design</div>
-          <div class="pillar-line"></div>
-          <p class="pillar-text">Founding and running TEDxAsia Pacific U — a full licensed TED event for the Asia Pacific university community. Managing speakers, sponsors, and a 40-person team to deliver experiences worth attending. August 2026 edition currently in production.</p>
-        </div>
+    <div class="hero-right">
+      <img src="IMG_0210_Original.jpeg" alt="Rafaya at Santa Monica Pier" class="hero-img-main" />
+      <div class="hero-img-badge">
+        <p>Currently based in</p>
+        <strong>Kuala Lumpur, Malaysia</strong>
       </div>
     </div>
   </section>
 
-  <section class="work-section">
-    <div style="max-width:1200px; margin: 0 auto;">
-      <div class="section-eyebrow reveal">
-        <span></span>
-        <p>Selected work</p>
+  <!-- MARKETING STORY -->
+  <section class="story-section">
+    <div class="story-grid">
+      <div class="story-text reveal">
+        <h2>I started with marketing — <em>accidentally.</em></h2>
+        <p>2020. COVID. Everything shut down and I needed to do something with my time. I started freelancing in digital marketing without really knowing what I was doing, and somewhere in the process of figuring it out, I realised I actually enjoyed it.</p>
+        <p>What hooked me was the outcome — seeing a client get real results, actual customers, measurable growth. Six years, 1,150 projects, and 550+ clients later, I've built a fairly strong conviction that most marketing fails not because of bad execution but because of bad strategy upstream.</p>
+        <p>That conviction is what eventually pushed me from doing marketing to building brands.</p>
       </div>
-      <div class="work-grid">
-        <div class="work-card reveal">
-          <div class="work-card-tag">Brand Strategy · Podcast</div>
-          <h3 class="work-card-title">Centered Edge</h3>
-          <p class="work-card-role">Head of Strategy & Marketing · 2025 – Present</p>
-          <p class="work-card-text">Building ASEAN's executive leadership intelligence platform from the ground up. Responsible for positioning, content architecture, podcast playbook, and the four-month roadmap to Season 2 launch.</p>
-          <div class="work-card-year">25</div>
+      <img src="RAQ-5292_-_Copy_Original.jpeg" alt="Rafaya speaking on stage" class="story-img reveal" />
+    </div>
+  </section>
+
+  <!-- CYBER STORY -->
+  <section class="story-section" style="background: var(--off-white);">
+    <div class="story-grid reverse">
+      <div class="story-text reveal">
+        <h2>Then there's the cybersecurity thing. <em>That's a longer story.</em></h2>
+        <p>I chose Computer Science specialising in Cybersecurity because, honestly, it sounded impressive. I spent most of university not particularly loving it.</p>
+        <p>Then I started working inside an actual cybersecurity operations centre and something clicked. The analytical rigour of it, the precision required, the way it trains you to look for what doesn't fit — I found myself genuinely interested for the first time.</p>
+        <p>What I realised is that the skills transfer. A security analyst and a brand strategist are solving the same fundamental problem — finding the signal in a lot of noise. I'd like to spend the next few years figuring out what it looks like to do both properly.</p>
+      </div>
+      <img src="IMG_0827_Original.jpeg" alt="Rafaya overlooking Death Valley" class="story-img reveal" />
+    </div>
+  </section>
+
+  <!-- WHAT I'M BUILDING -->
+  <section class="story-section">
+    <div class="what-section" style="padding: 0; border-bottom: none;">
+      <div class="what-header reveal">
+        <h2>What I'm building right now</h2>
+        <span>2025 – Present</span>
+      </div>
+      <div class="what-items">
+        <div class="what-item reveal">
+          <span class="what-item-label">Strategy</span>
+          <div>
+            <h3>Centered Edge</h3>
+            <p>Head of Strategy & Marketing at Centered Edge — the content and podcast arm of Mahat Advisory. Building the brand infrastructure for an executive leadership platform targeting ASEAN's C-suite. Season 2 launches August 2026.</p>
+          </div>
         </div>
-        <div class="work-card reveal">
-          <div class="work-card-tag">Institution · Education</div>
-          <h3 class="work-card-title">TAEI Academy</h3>
-          <p class="work-card-role">Co-Founder & Director · 2026 – Present</p>
-          <p class="work-card-text">Restructuring and relaunching a decade-old institution — The Advancement of Empathy and Integrity — for adult professionals in Malaysia. Rebuilding brand strategy, program architecture, and institutional positioning entirely from scratch.</p>
-          <div class="work-card-year">26</div>
+        <div class="what-item reveal">
+          <span class="what-item-label">Education</span>
+          <div>
+            <h3>TAEI Academy</h3>
+            <p>Co-Founder & Director of The Advancement of Empathy and Integrity — an institution working on the gap between who people believe they are and how they actually operate. Rebuilding and relaunching for adult professionals in Malaysia.</p>
+          </div>
         </div>
-        <div class="work-card reveal">
-          <div class="work-card-tag">Events · Ideas</div>
-          <h3 class="work-card-title">TEDxAsia Pacific U</h3>
-          <p class="work-card-role">Founder & Organiser · 2024 – Present</p>
-          <p class="work-card-text">Founded and run a full licensed TED event for the Asia Pacific university community. Speaker curation, sponsorship, 40-person team management, and full event production. 2026 edition themed "Room to Breathe" — August 1, Kuala Lumpur.</p>
-          <div class="work-card-year">24</div>
+        <div class="what-item reveal">
+          <span class="what-item-label">Events</span>
+          <div>
+            <h3>TEDxAsia Pacific U</h3>
+            <p>Founded and organise a full licensed TED event for the Asia Pacific university community. I almost didn't do it a second time. Then the event day happened and I stood in a room full of genuinely curious people and understood why you keep going. August 1, 2026. Kuala Lumpur.</p>
+          </div>
         </div>
-        <div class="work-card reveal">
-          <div class="work-card-tag">Marketing · Cybersecurity</div>
-          <h3 class="work-card-title">Axiata Cyber Fusion Center</h3>
-          <p class="work-card-role">Marketing Strategist & Cybersecurity Operations · 2025 – 2026</p>
-          <p class="work-card-text">Built and executed LinkedIn strategy for one of ASEAN's leading cybersecurity firms. Designed and ran Breach at Astraeus-9 — a full company-wide CTF competition with 15 challenges, custom branding, and a mock SIEM application built from scratch.</p>
-          <div class="work-card-year">25</div>
+        <div class="what-item reveal">
+          <span class="what-item-label">Leadership</span>
+          <div>
+            <h3>G100 Values & Volunteerism</h3>
+            <p>Malaysia Country Chair — leading national community and leadership initiatives as part of G100's global network. Building toward 100 committed volunteer members across the country.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="cta-strip">
-    <h2 class="section-title reveal">Let's build something<br><em>worth building.</em></h2>
-    <a href="pages/contact.html" class="btn-gold reveal">Get in touch</a>
-  </div>
+  <!-- PERSONAL -->
+  <section class="personal-section">
+    <div class="personal-inner">
+      <h2 class="personal-header reveal">Outside of all that —</h2>
+      <div class="personal-grid">
+        <div class="personal-item reveal">
+          <div class="personal-item-icon">✈</div>
+          <h4>I travel whenever I can</h4>
+          <p>Grand Canyon, Death Valley, California coast, Thailand. One of my bigger life goals is to see as much of the world as possible. Standing somewhere vast and ancient has a way of rearranging your problems into their actual size.</p>
+        </div>
+        <div class="personal-item reveal">
+          <div class="personal-item-icon">♡</div>
+          <h4>I read a lot</h4>
+          <p>Mostly romance and science fiction, which sounds contradictory but isn't. I'm drawn to things that sit in the space between uncertainty and nostalgia — stories that feel like life, a little unresolved and a little beautiful.</p>
+        </div>
+        <div class="personal-item reveal">
+          <div class="personal-item-icon">♪</div>
+          <h4>My music taste changes constantly</h4>
+          <p>I don't have a specific genre. One week it's something cinematic, the next it's completely different. I've stopped trying to categorise it. It is what it is depending on the mood, the weather, the city.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section style="border-top: 1px solid var(--border);">
+    <div class="contact-section">
+      <div class="contact-left reveal">
+        <h2>Let's talk,<br><em>shall we?</em></h2>
+        <p>I'm based in Kuala Lumpur and work across ASEAN. If you're thinking about a collaboration, a conversation, or just want to connect — reach out.</p>
+        <div class="contact-links">
+          <a href="https://linkedin.com/in/rafayaislamdiba" target="_blank" class="contact-link-item">
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">Rafaya Islam Diba</span>
+            <span class="contact-arrow">↗</span>
+          </a>
+          <a href="mailto:hello@rafaislamdiba.com" class="contact-link-item">
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">hello@rafaislamdiba.com</span>
+            <span class="contact-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+      <div class="contact-right reveal">
+        <blockquote>"The world is too deliberate, too detailed, too quietly extraordinary to feel accidental."</blockquote>
+        <cite>— Rafaya, somewhere between Death Valley and the Pacific Coast</cite>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <span class="footer-logo">Rafaya Islam Diba</span>
-    <div class="footer-links">
-      <a href="https://linkedin.com/in/rafayaislamdiba" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:hello@rafaislamdiba.com">Email</a>
-    </div>
-    <span class="footer-copy">© 2026 rafaislamdiba.com</span>
+    <span class="footer-copy">© 2026 rafaislamdiba.com · Hand-crafted and coded.</span>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    // KL live clock
+    function updateClock() {
+      const now = new Date();
+      const kl = new Intl.DateTimeFormat('en-MY', {
+        timeZone: 'Asia/Kuala_Lumpur',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        hour12: true
+      }).format(now);
+      document.getElementById('kl-time').textContent = kl + ' MYT';
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
