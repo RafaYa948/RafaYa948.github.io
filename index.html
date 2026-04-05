@@ -517,12 +517,15 @@
 
     /* REVEAL ANIMATIONS */
     .reveal {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 1;
+      transform: translateY(0);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+    }
 
     /* MOBILE */
     @media (max-width: 768px) {
@@ -563,7 +566,7 @@
       <p class="hero-tagline">Marketer, strategist, and cybersecurity practitioner. I started freelancing during a pandemic, chose a degree because it sounded impressive, and somehow ended up building things I actually care about: brands, institutions, and experiences.</p>
       <div class="hero-links">
         <a href="https://www.linkedin.com/in/rafaislamdiba948/" target="_blank" class="hero-link">LinkedIn ↗</a>
-        <a href="mailto:dibaislam342@gmail.com" class="hero-link">Say hello ↗</a>
+        <a href="/cdn-cgi/l/email-protection#6f0c00011b0e0c1b2f1d0e090e061c030e020b060d0e410c0002" class="hero-link">Say hello ↗</a>
       </div>
     </div>
     <div class="hero-right">
@@ -677,9 +680,9 @@
             <span class="contact-link-value">Rafa Islam Diba</span>
             <span class="contact-arrow">↗</span>
           </a>
-          <a href="mailto:dibaislam342@gmail.com" class="contact-link-item">
+          <a href="/cdn-cgi/l/email-protection#8ce4e9e0e0e3ccfeedeaede5ffe0ede1e8e5eeeda2efe3e1" class="contact-link-item">
             <span class="contact-link-label">Email</span>
-            <span class="contact-link-value">dibaislam342@gmail.com</span>
+            <span class="contact-link-value">contact@rafaislamdiba.com</span>
             <span class="contact-arrow">↗</span>
           </a>
         </div>
@@ -705,7 +708,8 @@
         hour: '2-digit', minute: '2-digit', second: '2-digit',
         hour12: true
       }).format(now);
-      document.getElementById('kl-time').textContent = kl + ' MYT';
+      const el = document.getElementById('kl-time');
+      if (el) el.textContent = kl + ' MYT';
     }
     updateClock();
     setInterval(updateClock, 1000);
@@ -715,7 +719,22 @@
       document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
     }, { passive: true });
 
-    // Reveal on scroll
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEa
+    // Reveal on scroll — progressive enhancement
+    try {
+      const reveals = document.querySelectorAll('.reveal');
+      reveals.forEach(el => el.classList.add('hidden'));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('hidden');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      reveals.forEach(el => observer.observe(el));
+    } catch(e) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.remove('hidden'));
+    }
+  </script>
+</body>
+</html>
